@@ -1,0 +1,113 @@
+{
+  "name": "wf-pc-chat",
+  "company": "wildfire",
+  "version": "0.6.1",
+  "description": "WF IM PC Client",
+  "appId": "cn.wildfire.chat",
+  "private": true,
+  "homepage": "https://wildfirechat.cn",
+  "maintainers": [
+    "imndx"
+  ],
+  "author": {
+    "email": "imndxx@wildirechat.cn",
+    "name": "imndx"
+  },
+  "scripts": {
+    "package": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js && vue-cli-service electron:build",
+    "dev": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js && vue-cli-service electron:serve --disable-background-timer-throttling",
+    "validate": "node scripts/validate.js",
+    "electron:dev": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "cross-package-win": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js win32 x64 && vue-cli-service electron:build --win --x64 -p never",
+    "cross-package-win32": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js win32 ia32 && vue-cli-service electron:build --win --ia32 -p never",
+    "cross-package-linux": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js linux x64 && vue-cli-service electron:build --linux --x64 -p never",
+    "cross-package-linux-arm64": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js linux arm64 && vue-cli-service electron:build --linux --arm64 -p never",
+    "cross-package-mac": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js darwin && vue-cli-service electron:build --mac -p never",
+    "cross-package-linux-mips64el": "node scripts/validate.js && node scripts/del.js ./marswrapper.node && node scripts/copy-proto.js linux mips64el && vue-cli-service electron:build --linux --arm64 -p never",
+    "cross-package-all": "node scripts/validate.js && node scripts/del.js ./dist_electron && npm run cross-package-mac && npm run cross-package-win && npm run cross-package-win32 && npm run cross-package-linux && npm run cross-package-linux-arm64",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "main": "background.js",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "@imndx/v-emoji-picker": "^2.3.7",
+    "@nearform/heap-profiler": "^2.0.0",
+    "anchorme": "^2.1.2",
+    "atob": "^2.1.2",
+    "axios": "^0.20.0",
+    "babel-preset-es2015": "^6.24.1",
+    "base64-arraybuffer": "^0.2.0",
+    "benz-amr-recorder": "^1.1.3",
+    "btoa": "^1.2.1",
+    "core-js": "^3.6.5",
+    "detectrtc": "^1.4.1",
+    "draggable-vue-directive": "^2.1.0",
+    "electron-screenshots": "^0.5.11",
+    "electron-tabs": "^0.17.0",
+    "electron-window-state": "^5.0.3",
+    "electron-windows-badge": "^1.1.0",
+    "events": "^3.2.0",
+    "file-system": "^2.2.2",
+    "i18n": "^0.13.2",
+    "jr-qrcode": "^1.1.4",
+    "js-base64": "^3.4.5",
+    "long": "^4.0.0",
+    "push.js": "^1.0.12",
+    "qrcode.vue": "^1.7.0",
+    "resize-image": "^0.1.0",
+    "tributejs": "^5.1.3",
+    "universal-emoji-parser": "^0.5.28",
+    "vue": "2.6.14",
+    "vue-click-outside": "^1.1.0",
+    "vue-context": "^6.0.0",
+    "vue-cool-lightbox": "^2.6.9",
+    "vue-dropdowns": "^1.1.2",
+    "vue-i18n": "^8.24.0",
+    "vue-infinite-loading": "^2.4.5",
+    "vue-js-modal": "^2.0.0-rc.6",
+    "vue-notification": "^1.3.20",
+    "vue-router": "^3.4.9",
+    "vue-spinner": "^1.0.4",
+    "vue-tippy": "^4.7.2",
+    "vue-virtual-scroll-list": "^2.3.4",
+    "vue-visibility-change": "^1.2.1",
+    "ws": "^8.6.0",
+    "xss": "^1.0.14"
+  },
+  "optionalDependencies": {
+    "electron-clipboard-ex": "^1.3.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "chalk": "^2.4.2",
+    "cpy-cli": "^3.1.1",
+    "del-cli": "^3.0.1",
+    "electron": "13.6.9",
+    "electron-devtools-installer": "^3.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "md5-file": "^5.0.0",
+    "native-ext-loader": "^2.3.0",
+    "npm-force-resolutions": "0.0.10",
+    "shelljs": "^0.8.4",
+    "vue-cli-plugin-electron-builder": "^2.0.0",
+    "vue-template-compiler": "2.6.14"
+  },
+  "eslintConfig": {
+    "root": false,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential"
+    ],
+    "rules": {}
+  },
+  "resolutions": {
+    "vue-cli-plugin-electron-builder/electron-builder": "22.14.5"
+  }
+}
